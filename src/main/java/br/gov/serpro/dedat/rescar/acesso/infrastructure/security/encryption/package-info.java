@@ -1,0 +1,1 @@
+package br.gov.serpro.dedat.rescar.acesso.infrastructure.security.encryption;

@@ -16,7 +16,18 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<jjwt.version>0.9.1</jjwt.version>
 	</properties>
+	<repositories>
+		<repository>
+			<id>maven-central</id>
+			<url>https://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>nexus-public</id>
+			<url>http://nexus.aic.serpro/repository/public</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -60,8 +71,13 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
-	</dependencies>
 
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>

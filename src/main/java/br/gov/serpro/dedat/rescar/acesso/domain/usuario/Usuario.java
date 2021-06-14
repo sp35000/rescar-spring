@@ -16,6 +16,7 @@ import br.gov.serpro.dedat.rescar.acesso.infrastructure.persistence.jpa.converte
 import br.gov.serpro.dedat.rescar.acesso.infrastructure.persistence.jpa.converter.SituacaoUsuarioConverter;
 import br.gov.serpro.dedat.rescar.acesso.infrastructure.validation.Validacao;
 
+@Entity
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -47,7 +48,6 @@ public class Usuario implements Serializable {
 		this.setSituacao(SituacaoUsuario.ATIVO);
 	}
 
-	@Entity
 	public Usuario(String email, SenhaCriptografada senha, String nome, Perfil perfil) {
 		this.setEmail(email);
 		this.setSenha(senha);
