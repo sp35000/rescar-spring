@@ -6,11 +6,11 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import org.hibernate.annotations.Entity;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.Id;
 
 import br.gov.serpro.dedat.rescar.acesso.infrastructure.persistence.jpa.converter.PerfilConverter;
 import br.gov.serpro.dedat.rescar.acesso.infrastructure.persistence.jpa.converter.SituacaoUsuarioConverter;

@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarDadosPessoaisCommand;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarDadosPessoaisUsuarioCommand;
 import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarPerfilUsuarioCommand;
 import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarSituacaoUsuarioCommand;
 import br.gov.serpro.dedat.rescar.acesso.application.command.IncluirUsuarioCommand;
@@ -23,6 +26,7 @@ import br.gov.serpro.dedat.rescar.acesso.domain.usuario.Usuario;
 import br.gov.serpro.dedat.rescar.acesso.domain.usuario.repository.UsuarioRepository;
 import br.gov.serpro.dedat.rescar.acesso.infrastructure.validation.Validacao;
 
+@Service
 public class ManterUsuarioService {
 
     private UsuarioRepository usuarioRepository;
@@ -36,6 +40,7 @@ public class ManterUsuarioService {
         this.criptografia = criptografia;
     }
 
+    @Transactional
     public UsuarioRepresentation incluir(IncluirUsuarioCommand command) {
         Validacao.notNull(command);
 
@@ -49,7 +54,8 @@ public class ManterUsuarioService {
         return new UsuarioRepresentation(usuario);
     }
 
-    public void alterarDadosPessoais(AlterarDadosPessoaisCommand command) {
+    @Transactional
+    public void alterarDadosPessoais(AlterarDadosPessoaisUsuarioCommand command) {
         Validacao.notNull(command);
 
         Usuario usuarioCadastrado = this.usuarioRepository.get(command.getId());
@@ -59,6 +65,7 @@ public class ManterUsuarioService {
         usuarioCadastrado.alterarDadosPessoais(command.getEmail(), new SenhaCriptografada(command.getSenha(), this.criptografia), command.getNome());
     }
 
+    @Transactional
     public void alterarPerfil(AlterarPerfilUsuarioCommand command) {
         Validacao.notNull(command);
 
@@ -69,6 +76,7 @@ public class ManterUsuarioService {
         usuarioCadastrado.alterarPerfil(Perfil.toEnum(command.getPerfil()));
     }
 
+    @Transactional
     public void alterarSituacao(AlterarSituacaoUsuarioCommand command) {
         Validacao.notNull(command);
 
@@ -79,6 +87,7 @@ public class ManterUsuarioService {
         usuarioCadastrado.alterarSituacao(SituacaoUsuario.toEnum(command.getSituacao()));
     }
 
+    @Transactional
     public UsuarioRepresentation obter(UUID id) {
         Validacao.notNull(id);
 
@@ -89,6 +98,7 @@ public class ManterUsuarioService {
         return new UsuarioRepresentation(usuarioCadastrado);
     }
 
+    @Transactional
     public List<UsuarioRepresentation> listarPorPerfil(ListarUsuarioPorPerfilQuery query) {
         Validacao.notNull(query);
 
@@ -100,6 +110,7 @@ public class ManterUsuarioService {
         return lista;
     }
 
+    @Transactional
     public List<UsuarioRepresentation> listar() {
         List<UsuarioRepresentation> lista = new ArrayList<>();
 

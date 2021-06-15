@@ -1,6 +1,6 @@
 package br.gov.serpro.dedat.rescar.acesso.application.validation;
 
-import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarDadosPessoaisCommand;
+import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarDadosPessoaisUsuarioCommand;
 import br.gov.serpro.dedat.rescar.acesso.domain.ObjetoExistente;
 import br.gov.serpro.dedat.rescar.acesso.domain.ValidationRule;
 import br.gov.serpro.dedat.rescar.acesso.domain.seguranca.Seguranca;
@@ -9,7 +9,7 @@ import br.gov.serpro.dedat.rescar.acesso.domain.usuario.repository.UsuarioReposi
 import br.gov.serpro.dedat.rescar.acesso.domain.usuario.validation.PermissaoAcessarDadosUsuario;
 import br.gov.serpro.dedat.rescar.acesso.domain.usuario.validation.UsuarioUnico;
 
-public class AlterarDadosPessoaisValidation implements ValidationRule<AlterarDadosPessoaisCommand> {
+public class AlterarDadosPessoaisValidation implements ValidationRule<AlterarDadosPessoaisUsuarioCommand> {
 
     private UsuarioRepository repository;
     private Seguranca seguranca;
@@ -22,7 +22,7 @@ public class AlterarDadosPessoaisValidation implements ValidationRule<AlterarDad
     }
 
     @Override
-    public void validate(AlterarDadosPessoaisCommand command) {
+    public void validate(AlterarDadosPessoaisUsuarioCommand command) {
         new ObjetoExistente().validate(this.usuarioCadastrado);
 
         new PermissaoAcessarDadosUsuario(this.seguranca).validate(this.usuarioCadastrado);

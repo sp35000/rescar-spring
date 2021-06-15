@@ -1,9 +1,22 @@
 package br.gov.serpro.dedat.rescar.acesso.application.command;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class AbstractUsuarioCommand {
 
+    @NotBlank
+    @Email
+    @Size(min = 5, max = 30)
     private String email;
+    
+    @NotBlank
+    @Size(min = 6, max = 128)
     private String senha;
+    
+    @NotBlank
+    @Size(min = 3, max = 80)
     private String nome;
 
     public String getEmail() {

@@ -17,7 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarDadosPessoaisCommand;
+import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarDadosPessoaisUsuarioCommand;
 import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarPerfilUsuarioCommand;
 import br.gov.serpro.dedat.rescar.acesso.application.command.AlterarSituacaoUsuarioCommand;
 import br.gov.serpro.dedat.rescar.acesso.application.command.IncluirUsuarioCommand;
@@ -134,7 +134,7 @@ public class ManterUsuarioServiceTest {
 
     @Test
     public void alteracaoDeUsuario() {
-        AlterarDadosPessoaisCommand command = new AlterarDadosPessoaisCommand();
+        AlterarDadosPessoaisUsuarioCommand command = new AlterarDadosPessoaisUsuarioCommand();
         command.setId(this.administrador.getId());
         command.setEmail("alterado@hotmail.com");
         command.setSenha("1234567");
@@ -150,7 +150,7 @@ public class ManterUsuarioServiceTest {
 
     @Test
     public void alteracaoDeUsuarioInexistente() {
-        AlterarDadosPessoaisCommand command = new AlterarDadosPessoaisCommand();
+        AlterarDadosPessoaisUsuarioCommand command = new AlterarDadosPessoaisUsuarioCommand();
         command.setId(this.administrador.getId());
         command.setEmail("alterado@hotmail.com");
         command.setSenha("1234567");
@@ -165,7 +165,7 @@ public class ManterUsuarioServiceTest {
 
     @Test
     public void alteracaoDeOutroUsuario() {
-        AlterarDadosPessoaisCommand command = new AlterarDadosPessoaisCommand();
+        AlterarDadosPessoaisUsuarioCommand command = new AlterarDadosPessoaisUsuarioCommand();
         command.setId(this.administrador.getId());
         command.setEmail("alterado@hotmail.com");
         command.setSenha("1234567");
